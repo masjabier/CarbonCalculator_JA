@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="image/ico" href="https://www.datatables.net/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, user-scalable=no">
+	<title>Editor example - In table form controls</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/editor.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="../resources/syntax/shCore.css">
+	<link rel="stylesheet" type="text/css" href="../resources/demo.css">
+	<style type="text/css" class="init">
+	
+	a.editor-create {
+		display: inline-block;
+		margin-bottom: 0.5em;
+	}
+
+	</style>
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../../js/dataTables.editor.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../resources/syntax/shCore.js"></script>
+	<script type="text/javascript" language="javascript" src="../resources/demo.js"></script>
+	<script type="text/javascript" language="javascript" src="../resources/editor-demo.js"></script>
+	<script type="text/javascript" language="javascript" class="init">
+	
+
+
+var editor; // use a global for the submit and return data rendering in the examples
+
+$(document).ready(function() {
+	editor = new $.fn.dataTable.Editor( {
+		"ajax": "/api/household",
+		"table": "#example",
+		"fields": [  /*{
+				"label": "ID:",
+				"name": "HouseHoldId"
+			},  */ {
+				"label": "Jumlah orang:",
+				"name": "AmountPeople"
+			}, {
+				"label": "Meter Stand",
+				"name": "StandMeter"
+			}, {
+				"label": "Konsumsi LPG:",
+				"name": "LpgConsumption"
+			}, {
+				"label": "Konsumsi Kendaraan:",
+				"name": "CityGasConsumption"
+			}, {
+				"label": "Tanggal:",
+				"name": "CreatedDate",
+				"type": "datetime"
+			} /* , {
+				"label": "UserID:",
+				"name": "UserId"
+			} */
+		]
+	} );
+
+	// New record
+	$('a.editor-create').on('click', function (e) {
+		e.preventDefault();
+
+		editor.create( {
+			title: 'Create new records',
+			buttons: 'Add'
+		} );
+	} );
+
+	// Edit record
+	$('#example').on('click', 'td.editor-edit', function (e) {
+		e.preventDefault();
+
+		editor.edit( $(this).closest('tr'), {
+			title: 'Edit record',
+			buttons: 'Update'
+		} );
+	} );
+
+	// Delete a record
+	$('#example').on('click', 'td.editor-delete', function (e) {
+		e.preventDefault();
+
+		editor.remove( $(this).closest('tr'), {
+			title: 'Delete record',
+			message: 'Are you sure you wish to remove this record?',
+			buttons: 'Delete'
+		} );
+	} );
+
+	$('#example').DataTable( {
+		ajax: "/api/household",
+		columns: [
+            {
+                data: null, render: function (data, type, row) {
+                    // Combine the first and last names into a single table field
+                    return "test";
+                }
+            },
+            //{ data: "Id" },
+			{ data: "AmountPeople" },
+			{ data: "StandMeter" },
+			{ data: "LpgConsumption" },
+			{ data: "CityGasConsumption" },
+			{ data: "CreatedDate" },
+			{data : "UserId"},
+			{
+				data: null, 
+				className: "dt-center editor-edit",
+				defaultContent: '<i class="fa fa-pencil"/>',
+				orderable: false
+			},
+			{
+				data: null, 
+				className: "dt-center editor-delete",
+				defaultContent: '<i class="fa fa-trash"/>',
+				orderable: false
+			}
+		]
+	} );
+} );
+
+
+
+	</script>
+</head>
+<body class="dt-example net">
+	<div class="container">
+		<section>
+			<div class="demo-html">
+				<a class="editor-create">+ Create new record</a>
+				<table id="example" class="display" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th>IDs</th>
+							<th>Jumlah Orang</th>
+							<th>Meter Listrik</th>
+							<th>Konsumsi LPG</th>
+							<th>Konsumsi BBM</th>
+							<th>Tanggal</th>
+							<th>Userid</th>
+							<th></th>
+							<th></th>
+
+						</tr>
+					</thead>					
+				</table>
+			</div>
+
+	</div>
+		</div>
+	</section>
+</body>
+</html>
