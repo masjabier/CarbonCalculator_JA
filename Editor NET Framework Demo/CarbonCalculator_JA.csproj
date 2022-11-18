@@ -223,47 +223,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\CheckboxController.cs" />
-    <Compile Include="Controllers\CompoundKeyController.cs" />
-    <Compile Include="Controllers\DatesController.cs" />
-    <Compile Include="Controllers\DateTimeController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
-    <Compile Include="Controllers\JoinArrayController.cs" />
-    <Compile Include="Controllers\JoinController.cs" />
-    <Compile Include="Controllers\JoinLinkTableController.cs" />
-    <Compile Include="Controllers\JoinSelfController.cs" />
-    <Compile Include="Controllers\JsonIdController.cs" />
-    <Compile Include="Controllers\RestController.cs" />
-    <Compile Include="Controllers\SequenceController.cs" />
-    <Compile Include="Controllers\SoftDelete.cs" />
     <Compile Include="Controllers\HouseHoldController.cs" />
-    <Compile Include="Controllers\StaffController.cs" />
-    <Compile Include="Controllers\StaffHtmlController.cs" />
-    <Compile Include="Controllers\StandaloneController.cs" />
-    <Compile Include="Controllers\TableOnlyDataController.cs" />
-    <Compile Include="Controllers\TimeController.cs" />
-    <Compile Include="Controllers\ToDoController.cs" />
-    <Compile Include="Controllers\UploadController.cs" />
-    <Compile Include="Controllers\UploadManyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CheckboxModel.cs" />
-    <Compile Include="Models\CompoundKeyModel.cs" />
-    <Compile Include="Models\DatesModel.cs" />
     <Compile Include="Models\VehicleModel.cs" />
-    <Compile Include="Models\JoinAccessModel.cs" />
-    <Compile Include="Models\JoinLinkTableModel.cs" />
-    <Compile Include="Models\JoinModel.cs" />
-    <Compile Include="Models\JoinSelfModel.cs" />
-    <Compile Include="Models\SequenceModel.cs" />
     <Compile Include="Models\HouseHoldModel.cs" />
-    <Compile Include="Models\StaffModel.cs" />
-    <Compile Include="Models\TableOnlyDataModel.cs" />
-    <Compile Include="Models\TimeModel.cs" />
-    <Compile Include="Models\ToDoModel.cs" />
-    <Compile Include="Models\UploadManyModel.cs" />
-    <Compile Include="Models\UploadModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -318,7 +284,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54888</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54888/</IISUrl>
+          <IISUrl>http://localhost:54889/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -15,8 +15,10 @@ namespace Editor_NET_Framework_Demo.Models
 
         public string CreatedDate { get; set; }
 
-        //public int PeriodeId { get; set; }
+        public int PeriodeId { get; set; }
 
         public int UserId { get; set; }
+
+        public int HouseCalculation { get; set; }
     }
 }

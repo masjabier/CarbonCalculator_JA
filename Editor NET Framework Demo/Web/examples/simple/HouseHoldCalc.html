@@ -55,10 +55,24 @@ $(document).ready(function() {
 				"label": "Tanggal:",
 				"name": "CreatedDate",
 				"type": "datetime"
-			} /* , {
-				"label": "UserID:",
-				"name": "UserId"
-			} */
+			} , {
+				"label": "Periode ID:",
+				"name": "PeriodeId",
+				def: "6"
+			},
+            {
+                "label": "User ID:",
+				"name": "UserId",
+                def: "1221"
+			},
+            {
+                "label": "Kalkulasi:",
+                "name": "HouseCalculation",
+				render: function (data, type, row) {
+                    //return 100;
+					return row.AmountPeople*100;
+				}
+            } 
 		]
 	} );
 
@@ -95,32 +109,62 @@ $(document).ready(function() {
 
 	$('#example').DataTable( {
 		ajax: "/api/household",
+		pageLength: 25,
+		order: [[5, 'asc']],
+        columnDefs: [
+            {
+                target: 0,
+                visible: false,
+                searchable: false,
+            }
+        ],
 		columns: [
             {
                 data: null, render: function (data, type, row) {
                     // Combine the first and last names into a single table field
                     return "test";
                 }
-            },
+            }, 
             //{ data: "Id" },
 			{ data: "AmountPeople" },
 			{ data: "StandMeter" },
 			{ data: "LpgConsumption" },
 			{ data: "CityGasConsumption" },
 			{ data: "CreatedDate" },
-			{data : "UserId"},
+            { data: "PeriodeId" },
+			{ data: "UserId" },
+            { data: "HouseCalculation" },
+
+			//Calculation for Household here
+			/*
+			{
+				data: null,
+				render: function (data, type, row) {
+                    return (row.AmountPeople * 100) + (row.StandMeter * 50);
+				}
+			}, */
+			/*
+			{
+                data: null, render: function (data, type, row) {
+                    // Combine the first and last names into a single table field
+                    return data.AmountPeople * 100;
+                }
+            }, */
+
 			{
 				data: null, 
 				className: "dt-center editor-edit",
 				defaultContent: '<i class="fa fa-pencil"/>',
 				orderable: false
 			},
+
 			{
 				data: null, 
 				className: "dt-center editor-delete",
 				defaultContent: '<i class="fa fa-trash"/>',
 				orderable: false
 			}
+			
 		]
 	} );
 } );
@@ -143,17 +187,19 @@ $(document).ready(function() {
 							<th>Konsumsi LPG</th>
 							<th>Konsumsi BBM</th>
 							<th>Tanggal</th>
+							<th>Periode ID</th>
 							<th>Userid</th>
+							<th>Kalkulasi</th>
 							<th></th>
 							<th></th>
 
 						</tr>
-					</thead>					
+					</thead>
 				</table>
 			</div>
-
+		</section>
 	</div>
-		</div>
-	</section>
+	
+
 </body>
 </html>

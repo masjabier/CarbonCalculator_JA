@@ -43,7 +43,7 @@ namespace Editor_NET_Framework_Demo.Controllers
                     .Field(new Field("CreatedDate")
                         .Validator(Validation.DateFormat(
                             Format.DATE_ISO_8601,
-                            new ValidationOpts { Message = "Please enter a date in the format yyyy-mm-dd" }
+                            new ValidationOpts { Message = "Masukkan tanggal dalam format yyyy-mm-dd" }
                         ))
                         .GetFormatter(Format.DateSqlToFormat(Format.DATE_ISO_8601))
                         .SetFormatter(Format.DateFormatToSql(Format.DATE_ISO_8601))
@@ -54,8 +54,14 @@ namespace Editor_NET_Framework_Demo.Controllers
                     )
 
                     // Setup for PeriodeID column
-                    //.Field(new Field("PeriodeId")
-                    //   .Validator(Validation.Numeric())
+                    .Field(new Field("PeriodeId")
+                       .Validator(Validation.Numeric())
+                    )
+
+                    //HouseCalculation
+                    .Field(new Field("HouseCalculation")
+                        .Validator(Validation.Numeric())
+                    )
 
                     .Process(request)
                     .Data();
